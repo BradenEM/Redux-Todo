@@ -16,12 +16,21 @@ class List extends React.Component {
     this.props.addTodo(this.state.newTask);
   };
 
-  toggleCompleted = (e, index) => {
+  clearForm = e => {
+    e.preventDefault();
+    this.setState({ newTask: "" });
+  };
+
+  comboFunction = e => {
+    this.addTask(e);
+    this.clearForm(e);
+  };
+
+  toggleCompleted = index => {
     this.props.toggleCompleted(index);
   };
 
   render() {
-    console.log(this.props.todos);
     return (
       <>
         <div>
@@ -31,11 +40,11 @@ class List extends React.Component {
             placeholder="add new task"
             onChange={this.handleChange}
           />
-          <button onClick={this.addTask}>ADD</button>
+          <button onClick={this.comboFunction}>ADD</button>
         </div>
         <div>
           {this.props.todos.map((todo, index) => (
-            <h3 onClick={e => this.toggleCompleted(e, index)} key={index}>
+            <h3 onClick={e => this.toggleCompleted(index)} key={index}>
               {todo.task} <span> </span>
               {todo.completed && <i className="fas fa-check-double" />}
             </h3>

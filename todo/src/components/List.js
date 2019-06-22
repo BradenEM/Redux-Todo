@@ -34,13 +34,15 @@ class List extends React.Component {
     return (
       <>
         <div>
-          <input
-            type="text"
-            value={this.state.newTask}
-            placeholder="add new task"
-            onChange={this.handleChange}
-          />
-          <button onClick={this.comboFunction}>ADD</button>
+          <form onSubmit={this.comboFunction}>
+            <input
+              type="text"
+              value={this.state.newTask}
+              placeholder="add new task"
+              onChange={this.handleChange}
+            />
+            <button onClick={this.comboFunction}>ADD</button>
+          </form>
         </div>
         <div>
           {this.props.todos.map((todo, index) => (

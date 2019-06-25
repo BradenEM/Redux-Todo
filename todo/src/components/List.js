@@ -14,16 +14,7 @@ class List extends React.Component {
   addTask = e => {
     e.preventDefault();
     this.props.addTodo(this.state.newTask);
-  };
-
-  clearForm = e => {
-    e.preventDefault();
     this.setState({ newTask: "" });
-  };
-
-  comboFunction = e => {
-    this.addTask(e);
-    this.clearForm(e);
   };
 
   toggleCompleted = index => {
@@ -41,7 +32,7 @@ class List extends React.Component {
               placeholder="add new task"
               onChange={this.handleChange}
             />
-            <button onClick={this.comboFunction}>ADD</button>
+            <button onClick={this.addTask}>ADD</button>
           </form>
         </div>
         <div>
